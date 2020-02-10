@@ -18,7 +18,7 @@ $ heroku create <your_application_name>
 ```
 
 4. Commit and push to heroku
-Make sure you have commited your changes and push to heroku
+Make sure you have commited your changes and push to herok
 ```sh
 $ git push heroku master
 ```
