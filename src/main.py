@@ -55,7 +55,7 @@ def login():
     #if user found, Identity can be any data that is json serializable
     ret = {
         'jwt': create_jwt(identity=email),
-        user: usercheck.serialize()
+        'user': usercheck.serialize()
     }
     return jsonify(ret), 200
 
