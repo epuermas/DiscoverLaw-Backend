@@ -53,7 +53,10 @@ def login():
     if usercheck == None:
         return jsonify({"msg": "Invalid credentials provided"}), 401
     #if user found, Identity can be any data that is json serializable
-    ret = {'jwt': create_jwt(identity=username)}
+    ret = {
+        'jwt': create_jwt(identity=email),
+        user: usercheck.serialize()
+    }
     return jsonify(ret), 200
 
 @app.route('/user', methods=['POST', 'GET'])
