@@ -227,20 +227,23 @@ def get_single_contact_lawyer(lawyer_id):
     return "Invalid Method", 404
 ################################################################################################################################################################
 
-@app.route('/test_email', methods=['POST'])
-def test_send_email():
-    body = request.get_json()
-    print("####",body)
-    # body = ["abelsegui@hotmail.com", "eduardopuermas@hotmail.com"]
-    send_mail(body['list'], body['object'], body['message'])
-
-    return "Succesfully sent", 200
-
-# @app.route('/test_email', methods=['GET'])
+# @app.route('/test_email', methods=['POST'])
 # def test_send_email():
-#     send_mail(["abelsegui@hotmail.com", "eduardopuermas@hotmail.com"], "A user has submitted a question", "Hello")
+#     body = request.get_json()
+#     print("####",body)
+#     # body = ["abelsegui@hotmail.com", "eduardopuermas@hotmail.com"]
+#     send_mail(body['list'], body['object'], body['message'])
 
 #     return "Succesfully sent", 200
+
+@app.route('/test_email', methods=['GET'])
+def test_send_email():
+    send_mail(["abelsegui@hotmail.com", "eduardopuermas@hotmail.com", "juanfco0128@gmail.com"], "A user has submitted a question", 
+    "Hello! Thank you for using DiscoverLaw!"
+    "A user has submitted a question, please follow the link below to answer"
+    "https://8080-e4fcd649-6811-4b59-880c-956e7030f32c.ws-us02.gitpod.io/askalawyer")
+
+    return "Succesfully sent", 200
 
 # Beginning of Question
 @app.route('/question', methods=['POST', 'GET'])
