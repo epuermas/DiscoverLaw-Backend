@@ -229,7 +229,7 @@ def get_single_contact_lawyer(lawyer_id):
 
 @app.route('/test_email', methods=['GET'])
 def test_send_email():
-    send_mail("juanfco0128@gmail.com", "Testing the email", "Hello")
+    send_mail(["juanfco0128@gmail.com", "eduardopuermas@hotmail.com"], "A user has submitted a question", "Hello")
 
     return "Succesfully sent", 200
 
