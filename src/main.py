@@ -232,7 +232,7 @@ def test_send_email():
     body = request.get_json()
     print("####",body)
     # body = ["abelsegui@hotmail.com", "eduardopuermas@hotmail.com"]
-    send_mail(body, "A user has submitted a question", "Hello")
+    send_mail(body['list'], body['object'], body['message'])
 
     return "Succesfully sent", 200
 
