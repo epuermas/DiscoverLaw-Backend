@@ -239,8 +239,8 @@ def get_single_contact_lawyer(lawyer_id):
 @app.route('/test_email', methods=['GET'])
 def test_send_email():
     send_mail(["abelsegui@hotmail.com", "eduardopuermas@hotmail.com", "juanfco0128@gmail.com"], "A user has submitted a question", 
-    "Hello! Thank you for using DiscoverLaw!"
-    "A user has submitted a question, please follow the link below to answer"
+    "Hello! Thank you for using DiscoverLaw!" " "
+    "A user has submitted a question, please follow the link below to answer" " "
     "https://8080-e4fcd649-6811-4b59-880c-956e7030f32c.ws-us02.gitpod.io/askalawyer")
 
     return "Succesfully sent", 200
