@@ -227,12 +227,20 @@ def get_single_contact_lawyer(lawyer_id):
     return "Invalid Method", 404
 ################################################################################################################################################################
 
-@app.route('/test_email', methods=['GET'])
+@app.route('/test_email', methods=['POST'])
 def test_send_email():
-    send_mail(["abelsegui@hotmail.com", "eduardopuermas@hotmail.com"], "A user has submitted a question", "Hello")
+    body = request.get_json()
+    print("####",body)
+    # body = ["abelsegui@hotmail.com", "eduardopuermas@hotmail.com"]
+    send_mail(body, "A user has submitted a question", "Hello")
 
     return "Succesfully sent", 200
 
+# @app.route('/test_email', methods=['GET'])
+# def test_send_email():
+#     send_mail(["abelsegui@hotmail.com", "eduardopuermas@hotmail.com"], "A user has submitted a question", "Hello")
+
+#     return "Succesfully sent", 200
 
 # Beginning of Question
 @app.route('/question', methods=['POST', 'GET'])
