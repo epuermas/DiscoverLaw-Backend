@@ -85,6 +85,8 @@ def get_user():
             body['zipcode'] = None
         if 'phone' not in body:
             raise APIException('You need to specify the phone', status_code=400)
+        if 'kind' not in body:
+            raise APIException('You need to specify the kind', status_code=400)
         
         user1 = User(name=body['name'], password = body['password'], email = body['email'], zipcode = body['zipcode'], kind= body['kind'], phone=body['phone'])
             
@@ -169,6 +171,8 @@ def get_lawyer():
             raise APIException('You need to specify the email', status_code=400)
         if 'zipcode' not in body:
             raise APIException('You need to specify the zipcode', status_code=400)
+        if 'kind' not in body:
+            raise APIException('You need to specify the kind', status_code=400)
         if 'phone' not in body:
             body['phone'] = None
 
