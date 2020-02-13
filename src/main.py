@@ -49,10 +49,11 @@ def login():
     if not password:
         return jsonify({"msg": "Missing password in request"}), 400
     # check for user in database
+    usercheck = None
     if kind == "user":
         usercheck = User.query.filter_by(email=email, password=password).first()
     if kind == "lawyer":
-        usercheck = Lawyer.query.filter_by(email=email, password=password).first()
+        usercheck = Lawyer.query.filter_by(email=email, password=password).firs()
     
     # if user not found
     if usercheck == None:
