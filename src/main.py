@@ -83,7 +83,7 @@ def get_user():
         if 'zipcode' not in body:
             body['zipcode'] = None
 
-        user1 = User(name=body['name'], password = body['password'], email = body['email'], zipcode = body['zipcode'], kind=['kind'])
+        user1 = User(name=body['name'], password = body['password'], email = body['email'], zipcode = body['zipcode'], kind= body['kind'])
         db.session.add(user1)
         db.session.commit()
 
