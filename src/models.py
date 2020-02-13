@@ -12,6 +12,7 @@ class User(db.Model):
     password = db.Column(db.String(120), unique=False, nullable=False)
     zipcode = db.Column(db.String(120), unique=False, nullable=False)
     kind = db.Column(db.String(120), unique=False, nullable=True)
+    phone = db.Column(db.String(120), unique=False, nullable=False)
     # questions = db.relationship(Question)
 
     def __repr__(self): 
