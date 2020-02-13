@@ -49,11 +49,11 @@ def login():
     if not password:
         return jsonify({"msg": "Missing password in request"}), 400
     # check for user in database
-    usercheck = None
-    if kind == "user":
-        usercheck = User.query.filter_by(email=email, password=password).first()
-    if kind == "lawyer":
-        usercheck = Lawyer.query.filter_by(email=email, password=password).firs()
+    kind = 'user'
+    usercheck = User.query.filter_by(email=email, password=password).first()
+    if usercheck is None:
+        kind = 'lawyer'
+        usercheck = Lawyer.query.filter_by(email=email, password=password).first()
     
     # if user not found
     if usercheck == None:
@@ -61,7 +61,8 @@ def login():
     #if user found, Identity can be any data that is json serializable
     ret = {
         'jwt': create_jwt(identity=email),
-        'user': usercheck.serialize()
+        'user': usercheck.serialize(),
+        'kind': kind
     }
     return jsonify(ret), 200
 
