@@ -82,8 +82,10 @@ def get_user():
             raise APIException('You need to specify the email', status_code=400)
         if 'zipcode' not in body:
             body['zipcode'] = None
+        if 'phone' not in body:
+            raise APIException('You need to specify the phone', status_code=400)
         
-        user1 = User(name=body['name'], password = body['password'], email = body['email'], zipcode = body['zipcode'], kind= body['kind'])
+        user1 = User(name=body['name'], password = body['password'], email = body['email'], zipcode = body['zipcode'], kind= body['kind'], phone=body['phone'])
             
         db.session.add(user1)
         db.session.commit()
