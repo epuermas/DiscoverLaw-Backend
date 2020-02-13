@@ -43,12 +43,17 @@ def login():
     params = request.get_json()
     email = params.get('email', None)
     password = params.get('password', None)
+    kind = params.get('kind', None)
     if not email:
         return jsonify({"msg": "Missing email in request"}), 400
     if not password:
         return jsonify({"msg": "Missing password in request"}), 400
     # check for user in database
-    usercheck = User.query.filter_by(email=email, password=password).first()
+    if kind == "user":
+        usercheck = User.query.filter_by(email=email, password=password).first()
+    if kind == "lawyer":
+        usercheck = Lawyer.query.filter_by(email=email, password=password).first()
+    
     # if user not found
     if usercheck == None:
         return jsonify({"msg": "Invalid credentials provided"}), 401
